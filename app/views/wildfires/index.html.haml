@@ -1,0 +1,28 @@
+%h1 Here are all the wildfires
+
+- @wildfires.each do |f|
+	Name:
+	= f.name
+	%br
+	burning since:
+	= f.start_date
+	%br
+	current size:
+	= f.fire_size
+	%br
+	location:
+	= f.location.name
+	%br
+	%br
+
+%h3 search by name
+= form_tag search_wildfires_path, method: "get" do
+	
+	= text_field_tag :search, params[:search]
+	= submit_tag "search", :name => nil
+
+
+
+
+
+

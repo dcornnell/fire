@@ -1,0 +1,16 @@
+%h1 this is the results pages
+
+- @search_results.each do |f|
+	Name:
+	= f.name
+	%br
+	burning since:
+	= f.start_date
+	%br
+	current size:
+	= f.fire_size
+	%br
+	location:
+	= f.location.name
+	%br
+	%br

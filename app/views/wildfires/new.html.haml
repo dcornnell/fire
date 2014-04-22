@@ -1,0 +1,17 @@
+= form_for @new_wildfire do |f|
+	=f.label :name
+	=f.text_field :name
+	%br
+	=f.label :start_date
+	=f.date_field :start_date
+	%br
+	=f.label :fire_size
+	=f.text_field :fire_size
+	%br
+	=f.label :still_burning
+	=f.check_box :still_burning
+	%br
+	=f.label :location	
+	=f.select :location_id, Location.all.collect {|l| [l.name, l.id]} 
+	%br
+	= f.submit
