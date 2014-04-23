@@ -36,20 +36,7 @@ class Wildfire < ActiveRecord::Base
 		end
 			 
 	end
-		# where('start_date > ?' , "#{search}" )
-			# where('name Like ?' , "%#{search}%")
 
-		# elsif type == 2
-		# 	if search
-		# 		where('start_date > ?' , "#{search}" )
-		# 	end
-		# else 
-		# 	if search 
-		# 		 where('name Like ?' , "%#{search}%")
-		# 	end
-
-
-		# end
 	
 
 end

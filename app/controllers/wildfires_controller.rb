@@ -23,7 +23,7 @@ class WildfiresController < ApplicationController
 		render results_wildfires_path 
 	end
 
-	def download_birth_certificate
+	def download_wildfire_photo
  		@wildfire = Wildfire.find(params[:id])
  		file = @wildfire.wildfire_photo
  		send_file file.path
