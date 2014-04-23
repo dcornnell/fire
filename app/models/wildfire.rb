@@ -1,6 +1,6 @@
 class Wildfire < ActiveRecord::Base
 	belongs_to :location
-
+	mount_uploader :wildfire_photo, WildfirePhotoUploader
 	scope :still_burning, -> {where(still_burning: true)}
 
 	def self.start_date(start_date)

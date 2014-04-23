@@ -14,4 +14,7 @@
 	=f.label :location	
 	=f.select :location_id, Location.all.collect {|l| [l.name, l.id]} 
 	%br
+	=f.label "Upload a photo of this fire?"
+	=f.file_field :wildfire_photo
+
 	= f.submit

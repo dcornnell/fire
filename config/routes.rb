@@ -4,6 +4,9 @@ WildFire::Application.routes.draw do
     get :search
     get :results
     end
+    member do
+      get :download_wildfire_photo
+    end
   end
 
   resources :locations

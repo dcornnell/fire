@@ -1,1 +1,5 @@
-show.html.haml
+= @wildfire.name
+
+-if @wildfire.wildfire_photo
+	=link_to "Download This Photo", download_wildfire_photo_wildfire_path
+	= image_tag @wildfire.wildfire_photo.url
