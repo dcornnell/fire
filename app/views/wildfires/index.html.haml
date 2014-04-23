@@ -5,7 +5,7 @@
 	= f.name
 	%br
 	burning since:
-	= f.start_date
+	= f.start_date.strftime("%B %e %Y ")
 	%br
 	current size:
 	= f.fire_size
@@ -19,12 +19,13 @@
 
 %h3 search 
 = form_tag search_wildfires_path, method: "get" do
-	= radio_button :type, "type", 1
-	=	radio_button :type, "type", 2
-	=	radio_button :type, "type", 3
 	%br
-	= text_field_tag :search, params[:search]
-	= submit_tag "search", :name => nil
+	= text_field_tag "search[search]"
+	=	select_tag 'search[location]', options_for_select(Location.pluck(:name)),include_blank: true
+	=	label_tag "check only fires that are still burning"
+	=	check_box_tag "search[still_burning]"
+	= date_field_tag "search[start_date]"	
+	= submit_tag "search"
 
 
 
