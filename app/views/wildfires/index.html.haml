@@ -15,9 +15,14 @@
 	%br
 	%br
 
-%h3 search by name
+
+
+%h3 search 
 = form_tag search_wildfires_path, method: "get" do
-	
+	= radio_button :type, "type", 1
+	=	radio_button :type, "type", 2
+	=	radio_button :type, "type", 3
+	%br
 	= text_field_tag :search, params[:search]
 	= submit_tag "search", :name => nil
 

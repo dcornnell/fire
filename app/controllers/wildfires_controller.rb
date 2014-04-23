@@ -18,7 +18,8 @@ class WildfiresController < ApplicationController
 	end
 
 	def search
-		@search_results = Wildfire.search(params[:search])
+		@choice = params[:type]
+		@search_results = Wildfire.search(params[:search], @choice)
 		render results_wildfires_path 
 	end
 
