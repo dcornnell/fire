@@ -1,31 +1,59 @@
-%h1 Here are all the wildfires
-
-- @wildfires.each do |f|
-	Name:
-	= f.name
-	%br
-	burning since:
-	= f.start_date.strftime("%B %e %Y ")
-	%br
-	current size:
-	= f.fire_size
-	%br
-	location:
-	= f.location.name
-	%br
-	%br
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
 
 
-
-%h3 search 
-= form_tag search_wildfires_path, method: "get" do
+%div.container
+	
 	%br
-	= text_field_tag "search[search]"
-	=	select_tag 'search[location]', options_for_select(Location.pluck(:name)),include_blank: true
-	=	label_tag "check only fires that are still burning"
-	=	check_box_tag "search[still_burning]"
-	= date_field_tag "search[start_date]"	
-	= submit_tag "search"
+	%table.table.table-striped
+		%th name
+		%th start date
+		%th size
+		%th still active
+		%th location
+		
+		- @wildfires.each do |f|
+			%tr
+				%td 
+					=link_to "#{f.name}",  "/wildfires/#{f.id}"
+				%td 
+					= f.start_date.strftime("%B %e %Y ")
+				%td 
+					= f.fire_size
+				%td
+					- if f.still_burning
+						burning
+				%td 
+					= f.location.name
+			
+
+
+	%div.search-bar
+		%div.search-bar-padding
+			%h1 Search 
+			= form_tag search_wildfires_path, method: "get" do
+				%div.search-bar-padding
+					= label_tag "name or description"
+					= text_field_tag "search[search]"
+					
+					= label_tag "location"
+					=	select_tag 'search[location]', options_for_select(Location.pluck(:name)),include_blank: true
+				%div.search-bar-padding
+					=	label_tag "check only fires that are still burning"
+					=	check_box_tag "search[still_burning]"
+					= label_tag "look for fires that started after:"
+					= date_field_tag "search[start_date]"	
+					= submit_tag "search"
 
 
 

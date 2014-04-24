@@ -1,5 +1,34 @@
-= @wildfire.name
 
--if @wildfire.wildfire_photo
-	=link_to "Download This Photo", download_wildfire_photo_wildfire_path
-	= image_tag @wildfire.wildfire_photo.url
+
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
+
+%div.container
+	%div.fire-body
+	
+		-if @wildfire.still_burning
+			%div.still-burning
+				%h4 Active Fire
+
+		%h1
+			= @wildfire.name
+		%hr
+		
+
+		-if @wildfire.wildfire_photo 
+			%ul.thumbnails
+			%li.span2
+				= image_tag @wildfire.wildfire_photo.url
+				= link_to "Download This Photo", download_wildfire_photo_wildfire_path
+		-else
+			%h1 no images available

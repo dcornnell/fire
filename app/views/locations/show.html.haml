@@ -1,5 +1,21 @@
-%h1= @location.name
--if @location.fire_prevention
-	This location has fire prevention services in place
--else
-	This location is currently without fire prevention services!
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
+
+
+
+
+%div.container
+	-if @location.fire_prevention
+		This location has fire prevention services in place
+	-else
+		This location is currently without fire prevention services!

@@ -9,7 +9,7 @@ class Wildfire < ActiveRecord::Base
 
 	def self.location(location)
 		
-		joins('JOIN locations ON wildfires.location_id = locations.id').where('locations.name Like ?', location)
+		joins(:location).where('locations.name Like ?', location)
 	end
 
 	def self.search(params)
@@ -31,10 +31,11 @@ class Wildfire < ActiveRecord::Base
 				search = search.start_date(start_date)
 			end
 
-		if user_input = " "
+		if user_input != " "
 				search = search.where('wildfires.name Like ?' , "%#{user_input}%" )
 		end
-			 
+
+		
 	end
 
 	

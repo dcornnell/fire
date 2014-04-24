@@ -1,10 +1,30 @@
-%h1 Here are all the locations
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
 
-- @locations.each do |l|
-	Name:
-	= l.name
-	%br
-	Fire Prevention Services
-	= l.fire_prevention
-	%br
-	%br
+
+
+
+%div.container
+	%table.table.table-striped
+		%th name
+		%th fire prevention services
+		- @locations.each do |l|	
+			%tr
+				%td
+					= l.name
+				%td
+					= l.fire_prevention
+
+	%butuon.btn.btn-default	
+		=link_to "Add a location",  "/locations/new"
+		

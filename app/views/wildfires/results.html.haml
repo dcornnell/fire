@@ -1,16 +1,37 @@
-%h1 this is the results pages
 
-- @search_results.each do |f|
-	Name:
-	= f.name
-	%br
-	burning since:
-	= f.start_date
-	%br
-	current size:
-	= f.fire_size
-	%br
-	location:
-	= f.location.name
-	%br
-	%br
+
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
+
+%div.container
+	%h1 Search Results
+	%table.table.table-striped
+		%th name
+		%th start date
+		%th size
+		%th still active
+		%th location
+		
+		- @search_results.each do |f|
+			%tr
+				%td 
+					=link_to "#{f.name}",  "/wildfires/#{f.id}"
+				%td 
+					= f.start_date.strftime("%B %e %Y ")
+				%td 
+					= f.fire_size
+				%td
+					- if f.still_burning
+						burning
+				%td 
+					= f.location.name

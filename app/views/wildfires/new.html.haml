@@ -1,20 +1,38 @@
-= form_for @new_wildfire do |f|
-	=f.label :name
-	=f.text_field :name
-	%br
-	=f.label :start_date
-	=f.date_field :start_date
-	%br
-	=f.label :fire_size
-	=f.text_field :fire_size
-	%br
-	=f.label :still_burning
-	=f.check_box :still_burning
-	%br
-	=f.label :location	
-	=f.select :location_id, Location.all.collect {|l| [l.name, l.id]} 
-	%br
-	=f.label "Upload a photo of this fire?"
-	=f.file_field :wildfire_photo
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
 
-	= f.submit
+
+%div.search-bar-padding
+	%h1 Report a fire
+	= form_for @new_wildfire do |f|
+		%div.search-bar-padding
+			=f.label :name
+			=f.text_field :name
+			%br
+			=f.label :start_date
+			=f.date_field :start_date
+			%br
+			=f.label :fire_size
+			=f.text_field :fire_size
+
+		%div.search-bar-padding
+			=f.label :still_burning
+			=f.check_box :still_burning
+			%br
+			=f.label :location	
+			=f.select :location_id, Location.all.collect {|l| [l.name, l.id]} 
+			
+			=f.label "Upload a photo of this fire?"
+			=f.file_field :wildfire_photo
+
+			= f.submit

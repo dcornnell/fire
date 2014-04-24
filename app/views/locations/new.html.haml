@@ -1,10 +1,28 @@
-= form_for @new_location do |f|
-	=f.label :name
-	=f.text_field :name
+%div.top-bar
+	%div.container
+		%div.title-bar
+			%h1 Wildfires
+		%div.search-bar
+			%div.btn-group
+				%button.btn.btn-default 
+					=link_to "Locations",  "/locations"  
+				%butuon.btn.btn-default	
+					=link_to "Wildfires",  "/wildfires"
+				%butuon.btn.btn-danger	
+					=link_to "Report a Fire",  "/wildfires/new"
 
-	=f.label :fire_prevention
-	=f.check_box :fire_prevention
 
-	
 
-	= f.submit
+
+%div.container
+
+	= form_for @new_location do |f|
+		=f.label :name
+		=f.text_field :name
+
+		=f.label :fire_prevention
+		=f.check_box :fire_prevention
+
+		%br
+
+		= f.submit
